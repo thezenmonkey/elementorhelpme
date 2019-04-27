@@ -94,14 +94,13 @@ add_action( 'elementor/theme/register_locations', 'hello_elementor_theme_registe
 
 function get_post_date( $atts ) {
 	$a = shortcode_atts( array(
-		'foo' => 'something',
-		'bar' => 'something else',
+		'format' => $atts['format']
 	), $atts );
 	
 	if ( array_key_exists("format",$a) ) {
 		return get_the_date($a['format']);
 	} else {
-		return get_the_date('m ([ .\t-])* dd [,.stndrh\t ]+ y');
+		return get_the_date('m dd, y');
 	}
 }
 add_shortcode( 'post_date', 'get_post_date' );
